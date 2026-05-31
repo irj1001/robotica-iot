@@ -17,21 +17,25 @@ class RoboMentor:
             return json.load(f)
 
     def get_project(self):
-        if not self.state.get("project"):
+        idx = self.state["project"]
+
+        if idx is None:
             return None
 
-        for p in self.roadmap["projects"]:
-            if p["name"] == self.state["project"]:
-                return p
+        if idx < 0 or idx >= len(self.roadmap["projects"]):
+            return None
 
-        return None
+        return self.roadmap["projects"][idx]
 
-    def start_project(self, name):
-        self.state["project"] = name
+    def start_project(self, index=0):
+        self.state["project"] = index
         self.state["phase"] = 0
         self.state["task_status"] = {}
 
-        add_log("INFO", f"Proyecto iniciado: {name}", self.state)
+        project = self.get_project()
+        project_name = project["name"] if project else str(index)
+
+        add_log("INFO", f"Proyecto iniciado: {project_name}", self.state)
         save_state(self.state)
 
     # =========================
@@ -45,7 +49,7 @@ class RoboMentor:
 
         idx = self.state["phase"]
 
-        if idx >= len(project["phases"]):
+        if idx < 0 or idx >= len(project["phases"]):
             return None
 
         return project["phases"][idx]
@@ -89,27 +93,44 @@ class RoboMentor:
         if not phase:
             return
 
-        key = self._task_key()
         status = self.init_task_status(phase)
 
+        if index < 0 or index >= len(status):
+            return
+
         status[index] = not status[index]
-        self.state["task_status"][key] = status
+        self.state["task_status"][self._task_key()] = status
 
         save_state(self.state)
 
-        # auto complete si todo OK
         if all(status):
             self.confirm_phase(True)
 
     # =========================
-    # CONFIRMACIÓN
+    # TRANSICIÓN SEGURA
     # =========================
     def confirm_phase(self, ok=True):
+        project = self.get_project()
+
+        if not project:
+            return
+
+        project_name = project["name"]
+        total_phases = len(project["phases"])
+
         if ok:
             self.state["phase"] += 1
             add_log("OK", "Fase completada", self.state)
         else:
             add_log("ERROR", "Fase fallida", self.state)
+
+        # si termina proyecto → siguiente proyecto automático
+        if self.state["phase"] >= total_phases:
+            self.state["project"] += 1
+            self.state["phase"] = 0
+            self.state["task_status"] = {}
+
+            add_log("INFO", f"Proyecto completado → siguiente proyecto ({project_name})", self.state)
 
         save_state(self.state)
 
@@ -160,7 +181,7 @@ class RoboMentor:
     # RESET
     # =========================
     def reset_project(self):
-        self.state["project"] = None
+        self.state["project"] = 0
         self.state["phase"] = 0
         self.state["task_status"] = {}
         save_state(self.state)

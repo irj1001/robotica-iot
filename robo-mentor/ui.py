@@ -12,13 +12,14 @@ st.title("🤖 RoboMentor Pro Dashboard")
 # =========================
 # INIT PROJECT
 # =========================
-if agent.state["project"] is None:
+if agent.state["project"] is None or agent.state["project"] < 0:
 
     st.subheader("📦 Selección de proyecto")
 
     project = st.selectbox(
         "Elige un proyecto",
-        [p["name"] for p in agent.roadmap["projects"]]
+        list(range(len(agent.roadmap["projects"]))),
+        format_func=lambda i: agent.roadmap["projects"][i]["name"]
     )
 
     if st.button("🚀 Iniciar proyecto"):
@@ -42,11 +43,14 @@ else:
 
         current, total, percent = agent.get_progress()
 
-        st.subheader(f"📦 Proyecto: {data['project']}")
+        project_name = project_obj["name"] if project_obj else "N/A"
+
+        st.subheader(f"📦 Proyecto: {project_name}")
         st.write(f"🔢 Fase: {current} / {total}")
         st.write(f"📊 Progreso: {percent}%")
 
-        st.progress(percent / 100)
+        progress_value = min(percent / 100, 1.0)
+        st.progress(progress_value)
 
         st.markdown(f"## 🧭 {data['title']}")
         st.markdown("### 🛠 Tareas")
@@ -103,8 +107,8 @@ else:
 
         st.subheader("📊 Estado")
 
-        st.metric("Proyecto", data["project"])
-        st.metric("Fase", data["phase"])
+        st.metric("Proyecto", agent.state["project"])
+        st.metric("Fase", agent.state["phase"])
 
         st.markdown("---")
 
@@ -114,18 +118,7 @@ else:
 
         st.markdown("---")
 
-        st.subheader("🧾 Historial")
-
-        history = agent.state.get("history", [])[-5:]
-        if history:
-            for h in history:
-                st.write("•", h)
-        else:
-            st.write("Sin eventos")
-
-        st.markdown("---")
-
-        st.subheader("📜 Logs")
+        st.subheader("🧾 Logs")
 
         def load_logs():
             try:
@@ -150,7 +143,7 @@ else:
 
         if st.button("Generar prompt"):
             prompt = f"""
-Proyecto: {data['project']}
+Proyecto: {project_name}
 Fase: {data['title']}
 Tareas: {data['tasks']}
 
@@ -183,7 +176,8 @@ Dame:
                 format_func=lambda i: phases[i]["title"]
             )
 
-            if st.button("📍 Saltar"):
+            if st.button("📍 Saltar fase"):
+                # FIX IMPORTANTE: no romper estado
                 agent.state["phase"] = selected
                 save_state(agent.state)
                 st.rerun()
