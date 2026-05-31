@@ -1,0 +1,30 @@
+{
+  "project": "Preparaci\u00f3n del entorno",
+  "phase": 3,
+  "history": [],
+  "task_status": {
+    "Preparaci\u00f3n del entorno_0": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "Preparaci\u00f3n del entorno_1": [
+      true,
+      true,
+      true
+    ],
+    "Preparaci\u00f3n del entorno_2": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "Preparaci\u00f3n del entorno_3": [
+      false,
+      false,
+      false
+    ]
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "project_global_goal": "En 6 meses tener experiencia real en ROS2, ESP32 moderno, visión artificial, edge AI y construir un proyecto de robótica completo para portfolio y posibles productos propios.",
+
+  "projects": [
+    {
+      "name": "Preparación del entorno",
+      "type": "setup",
+      "phases": [
+        {
+          "title": "Instalación de entorno base",
+          "tasks": [
+            "Instalar Docker Desktop",
+            "Aprender Docker Compose básico",
+            "Entender volúmenes en Docker",
+            "Entender redes en Docker",
+            "Ignorar Kubernetes por ahora"
+          ],
+          "resources": [
+            "https://docs.docker.com/"
+          ]
+        },
+        {
+          "title": "Configurar Raspberry Pi como servidor",
+          "tasks": [
+            "Instalar sistema operativo en Raspberry Pi",
+            "Configurar acceso remoto SSH",
+            "Preparar Raspberry Pi como servidor doméstico básico"
+          ],
+          "resources": [
+            "https://www.raspberrypi.com/documentation/"
+          ]
+        },
+        {
+          "title": "Preparación ESP32 moderna",
+          "tasks": [
+            "Instalar ESP-IDF",
+            "Configurar entorno de desarrollo ESP32-S3",
+            "Compilar y ejecutar ejemplo básico",
+            "Entender diferencias con Arduino"
+          ],
+          "resources": [
+            "https://docs.espressif.com/projects/esp-idf/en/latest/esp32/"
+          ]
+        },
+        {
+          "title": "Estructura GitHub del proyecto",
+          "tasks": [
+            "Crear repositorio principal 'robotica'",
+            "Crear estructura de carpetas iot-station, printer-monitor, ros2-robot, robotic-arm, docs",
+            "Subir primer commit con estructura base"
+          ],
+          "resources": [
+            "https://skills.github.com/"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "IoT moderno - Smart Desk Station",
+      "type": "iot",
+      "phases": [
+        {
+          "title": "Diseño de estación IoT básica",
+          "tasks": [
+            "Definir sensores: temperatura, humedad, luz",
+            "Conectar ESP32 a sensores",
+            "Montar caja inicial en impresión 3D"
+          ],
+          "hardware": [
+            "ESP32",
+            "Sensor temperatura/humedad",
+            "Sensor de luz"
+          ]
+        },
+        {
+          "title": "MQTT básico",
+          "tasks": [
+            "Instalar Mosquitto en Docker",
+            "Publicar datos desde ESP32",
+            "Suscribirse desde script Python",
+            "Entender publish/subscribe"
+          ],
+          "resources": [
+            "https://www.hivemq.com/mqtt/",
+            "https://mosquitto.org/"
+          ]
+        },
+        {
+          "title": "Dashboard de datos",
+          "tasks": [
+            "Instalar InfluxDB o equivalente",
+            "Conectar datos MQTT a base de datos",
+            "Configurar Grafana",
+            "Crear dashboard visual"
+          ],
+          "resources": [
+            "https://grafana.com/"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Computer Vision - Impresora 3D monitor",
+      "type": "ai_vision",
+      "phases": [
+        {
+          "title": "OpenCV básico",
+          "tasks": [
+            "Captura de vídeo con cámara",
+            "Procesamiento de imagen básico",
+            "Detección simple de cambios"
+          ],
+          "resources": [
+            "https://docs.opencv.org/master/d9/df8/tutorial_root.html"
+          ]
+        },
+        {
+          "title": "YOLO detección",
+          "tasks": [
+            "Instalar Ultralytics YOLO",
+            "Ejecutar inferencia en imágenes",
+            "Preparar dataset básico"
+          ],
+          "resources": [
+            "https://docs.ultralytics.com/"
+          ]
+        },
+        {
+          "title": "Sistema de monitorización",
+          "tasks": [
+            "Conectar Raspberry Pi con cámara",
+            "Detectar estado de impresión",
+            "Enviar datos a dashboard"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "ROS2 fundamentos",
+      "type": "robotics_core",
+      "phases": [
+        {
+          "title": "Instalación ROS2",
+          "tasks": [
+            "Instalar Ubuntu",
+            "Instalar ROS2 Jazzy",
+            "Ejecutar primeros nodes"
+          ],
+          "resources": [
+            "https://docs.ros.org/en/jazzy/"
+          ]
+        },
+        {
+          "title": "Conceptos ROS2",
+          "tasks": [
+            "Entender nodes",
+            "Entender topics",
+            "Entender services",
+            "Entender actions"
+          ],
+          "resources": [
+            "https://articulatedrobotics.xyz/"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Robot móvil ROS2 (Rover)",
+      "type": "robotics_project",
+      "phases": [
+        {
+          "title": "Diseño rover",
+          "tasks": [
+            "Diseñar chasis en Fusion 360",
+            "Imprimir estructura en 3D",
+            "Seleccionar motores y drivers"
+          ],
+          "hardware": [
+            "Raspberry Pi",
+            "ESP32",
+            "Motores DC",
+            "Encoders"
+          ]
+        },
+        {
+          "title": "Navegación básica",
+          "tasks": [
+            "Mover robot manualmente",
+            "Implementar control básico",
+            "Integrar ROS2 base"
+          ]
+        },
+        {
+          "title": "SLAM y navegación",
+          "tasks": [
+            "Implementar SLAM Toolbox",
+            "Crear mapas",
+            "Navegación con Navigation2"
+          ],
+          "resources": [
+            "https://docs.ros.org/en/ros2_packages/jazzy/api/slam_toolbox/",
+            "https://navigation.ros.org/"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Diseño mecánico avanzado",
+      "type": "mechanics",
+      "phases": [
+        {
+          "title": "Fundamentos mecánicos",
+          "tasks": [
+            "Estudiar mecanismos básicos",
+            "Entender engranajes y transmisiones",
+            "Aplicar tolerancias de impresión 3D"
+          ],
+          "resources": [
+            "https://507movements.com/",
+            "https://help.prusa3d.com/"
+          ]
+        },
+        {
+          "title": "Brazo robótico",
+          "tasks": [
+            "Diseñar brazo en CAD",
+            "Control manual inicial",
+            "Añadir cinemática inversa",
+            "Integrar con ROS2"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "IA integrada / Edge AI",
+      "type": "ai_systems",
+      "phases": [
+        {
+          "title": "Edge AI base",
+          "tasks": [
+            "Ejecutar modelos en local",
+            "Optimizar inferencia en Raspberry Pi"
+          ],
+          "resources": [
+            "https://huggingface.co/learn",
+            "https://ollama.com/"
+          ]
+        },
+        {
+          "title": "Sistema inteligente de inventario",
+          "tasks": [
+            "Crear cajas físicas con impresión 3D",
+            "Etiquetado QR",
+            "Base de datos de inventario",
+            "Consultas tipo LLM"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Mini fábrica autónoma (ASTI Robotics Challenge style)",
+      "type": "final_integration_system",
+      "phase_position": "capstone",
+      "goal": "Sistema robótico completo tipo célula industrial autónoma con percepción, decisión y actuación integrada",
+      "phases": [
+        {
+          "title": "Simulación de flujo de fábrica",
+          "tasks": [
+            "Definir flujo de piezas entrada → clasificación → salida",
+            "Diseñar lógica de estados del sistema",
+            "Simular comportamiento sin hardware"
+          ]
+        },
+        {
+          "title": "Sistema de percepción",
+          "tasks": [
+            "Detección de objetos con visión artificial",
+            "Clasificación de piezas",
+            "Tracking básico"
+          ]
+        },
+        {
+          "title": "Sistema de decisión",
+          "tasks": [
+            "Motor de reglas o lógica Python",
+            "Decisión de clasificación automática",
+            "Gestión de estados de producción"
+          ]
+        },
+        {
+          "title": "Sistema de actuación",
+          "tasks": [
+            "Control de servos o actuadores",
+            "Movimiento de piezas",
+            "Sincronización con lógica central"
+          ]
+        },
+        {
+          "title": "Integración completa",
+          "tasks": [
+            "Conectar visión + decisión + actuadores",
+            "Comunicación MQTT o ROS2",
+            "Ejecución autónoma del sistema completo",
+            "Optimización de flujo de piezas"
+          ]
+        }
+      ]
+    }
+  ]
+}
