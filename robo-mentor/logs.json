@@ -33,5 +33,19 @@
     "message": "Proyecto completado \u2192 siguiente proyecto (Preparaci\u00f3n del entorno)",
     "project": 1,
     "phase": 0
+  },
+  {
+    "time": "2026-06-02 11:49:57",
+    "type": "OK",
+    "message": "Fase completada",
+    "project": 1,
+    "phase": 1
+  },
+  {
+    "time": "2026-06-02 11:50:09",
+    "type": "OK",
+    "message": "Fase completada",
+    "project": 1,
+    "phase": 2
   }
 ]

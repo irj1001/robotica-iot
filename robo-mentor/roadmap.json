@@ -2,7 +2,6 @@
   "project_global_goal": "En 6 meses tener experiencia real en ROS2, ESP32 moderno, visión artificial, edge AI y construir un proyecto de robótica completo para portfolio y posibles productos propios.",
 
   "projects": [
-
     {
       "name": "Preparación del entorno",
       "type": "setup",
@@ -31,8 +30,8 @@
           "title": "Preparación ESP32 moderna",
           "tasks": [
             "Instalar ESP-IDF",
-            "Configurar entorno ESP32-S3",
-            "Compilar ejemplo básico",
+            "Configurar entorno de desarrollo ESP32-S3",
+            "Compilar y ejecutar ejemplo básico",
             "Entender diferencias con Arduino"
           ],
           "resources": ["https://docs.espressif.com/projects/esp-idf/en/latest/esp32/"]
@@ -40,9 +39,9 @@
         {
           "title": "Estructura GitHub del proyecto",
           "tasks": [
-            "Crear repo principal robotica",
-            "Crear estructura de carpetas",
-            "Subir primer commit"
+            "Crear repositorio principal 'robotica'",
+            "Crear estructura de carpetas iot-station, printer-monitor, ros2-robot, robotic-arm, docs",
+            "Subir primer commit con estructura base"
           ],
           "resources": ["https://skills.github.com/"]
         }
@@ -50,68 +49,103 @@
     },
 
     {
-      "name": "IoT moderno - Smart Desk Station",
+      "name": "IoT Smart Desk Station",
       "type": "iot",
       "phases": [
         {
-          "title": "Diseño estación IoT",
+          "title": "Diseño estación IoT básica",
           "tasks": [
-            "Definir sensores",
-            "Conectar ESP32",
-            "Caja impresión 3D"
+            "Definir sensores finales (TMP36, LDR, DHT22, GY-302)",
+            "Montaje en protoboard",
+            "Validar lecturas básicas de sensores"
           ],
-          "hardware": ["ESP32", "Sensor temp/humedad", "Sensor luz"]
+          "hardware": [
+            "ESP32",
+            "TMP36",
+            "LDR (kit Arduino)",
+            "DHT22",
+            "GY-302 (BH1750)",
+            "Protoboard 400-830 puntos",
+            "Cables Dupont"
+          ]
         },
         {
-          "title": "MQTT básico",
+          "title": "MQTT + pipeline de datos",
           "tasks": [
-            "Mosquitto en Docker",
-            "Publish ESP32",
-            "Subscribe Python",
-            "Entender pub/sub"
+            "Publicar datos desde ESP32 por MQTT",
+            "Suscribirse con Python",
+            "Guardar datos en CSV",
+            "Definir formato JSON estructurado"
           ],
-          "resources": ["https://mosquitto.org/"]
+          "resources": [
+            "https://www.hivemq.com/mqtt/",
+            "https://mosquitto.org/"
+          ]
         },
         {
-          "title": "Dashboard de datos",
+          "title": "Dashboard IoT",
           "tasks": [
-            "InfluxDB",
-            "Conectar MQTT",
-            "Grafana dashboard"
+            "Crear dashboard Streamlit base",
+            "Añadir auto-refresh en tiempo real",
+            "Añadir gráficos históricos",
+            "Separar dashboards por sensores"
           ],
-          "resources": ["https://grafana.com/"]
+          "resources": [
+            "https://docs.streamlit.io/"
+          ]
+        },
+        {
+          "title": "Integración multi-sensor",
+          "tasks": [
+            "Integrar DHT22",
+            "Integrar GY-302",
+            "Unificar datos en un solo payload MQTT",
+            "Validar estabilidad del sistema"
+          ]
+        },
+        {
+          "title": "Producto físico IoT",
+          "tasks": [
+            "Añadir OLED SSD1306",
+            "Diseñar caja en Fusion 360",
+            "Imprimir carcasa 3D",
+            "Montaje final estación IoT"
+          ],
+          "hardware": [
+            "OLED SSD1306 I2C 0.96"
+          ]
         }
       ]
     },
 
     {
-      "name": "Computer Vision - Impresora 3D monitor",
+      "name": "Computer Vision - Printer Monitor",
       "type": "ai_vision",
       "phases": [
         {
           "title": "OpenCV básico",
           "tasks": [
-            "Captura vídeo",
-            "Procesamiento básico",
-            "Detección cambios"
+            "Captura de vídeo con cámara",
+            "Procesamiento básico de imagen",
+            "Detección de cambios"
           ],
           "resources": ["https://docs.opencv.org/"]
         },
         {
           "title": "YOLO detección",
           "tasks": [
-            "Ultralytics YOLO",
-            "Inferencia",
-            "Dataset básico"
+            "Instalar Ultralytics YOLO",
+            "Ejecutar inferencia en imágenes",
+            "Preparar dataset básico"
           ],
           "resources": ["https://docs.ultralytics.com/"]
         },
         {
-          "title": "Sistema monitorización",
+          "title": "Sistema monitor impresión 3D",
           "tasks": [
-            "Cámara Raspberry Pi",
-            "Detectar impresión",
-            "Enviar datos"
+            "Raspberry Pi con cámara",
+            "Detección estado impresión",
+            "Integración con dashboard IoT"
           ]
         }
       ]
@@ -125,9 +159,10 @@
           "title": "Instalación ROS2",
           "tasks": [
             "Instalar Ubuntu",
-            "Instalar ROS2",
-            "Primeros nodes"
-          ]
+            "Instalar ROS2 Jazzy",
+            "Ejecutar primeros nodes"
+          ],
+          "resources": ["https://docs.ros.org/en/jazzy/"]
         },
         {
           "title": "Conceptos ROS2",
@@ -136,7 +171,8 @@
             "Topics",
             "Services",
             "Actions"
-          ]
+          ],
+          "resources": ["https://articulatedrobotics.xyz/"]
         }
       ]
     },
@@ -148,26 +184,30 @@
         {
           "title": "Diseño rover",
           "tasks": [
-            "CAD Fusion 360",
-            "Impresión 3D",
-            "Motores"
+            "Diseño CAD en Fusion 360",
+            "Impresión 3D chasis",
+            "Selección motores con encoder"
           ],
-          "hardware": ["Raspberry Pi", "ESP32", "Motores DC", "Encoders"]
+          "hardware": [
+            "Raspberry Pi",
+            "ESP32",
+            "Motores DC con encoder",
+            "Drivers DRV8833"
+          ]
         },
         {
-          "title": "Navegación básica",
+          "title": "Control básico",
           "tasks": [
-            "Control manual",
-            "Control básico",
-            "ROS2 integración"
+            "Control manual del robot",
+            "Integración ESP32 + ROS2 bridge"
           ]
         },
         {
           "title": "SLAM y navegación",
           "tasks": [
             "SLAM Toolbox",
-            "Mapas",
-            "Navigation2"
+            "Navigation2",
+            "Mapeo y navegación autónoma"
           ]
         }
       ]
@@ -180,18 +220,18 @@
         {
           "title": "Fundamentos mecánicos",
           "tasks": [
-            "Mecanismos",
-            "Engranajes",
-            "Tolerancias 3D"
+            "Mecanismos básicos",
+            "Engranajes y transmisiones",
+            "Tolerancias impresión 3D"
           ]
         },
         {
           "title": "Brazo robótico",
           "tasks": [
-            "Diseño CAD",
-            "Control manual",
+            "Diseño CAD brazo",
             "Cinemática inversa",
-            "ROS2 integración"
+            "Control servos",
+            "Integración ROS2"
           ]
         }
       ]
@@ -204,70 +244,43 @@
         {
           "title": "Edge AI base",
           "tasks": [
-            "Modelos locales",
+            "Inferencia local modelos",
             "Optimización Raspberry Pi"
           ]
         },
         {
-          "title": "Inventario inteligente",
+          "title": "Sistema inventario inteligente",
           "tasks": [
-            "Cajas físicas",
-            "QR",
-            "Base datos",
-            "Consultas LLM"
+            "Cajas con QR",
+            "Base de datos local",
+            "Consultas tipo LLM"
           ]
         }
       ]
     },
 
     {
-      "name": "Mini fábrica autónoma (ASTI Robotics Challenge style)",
+      "name": "Mini fábrica autónoma",
       "type": "final_integration_system",
-      "goal": "Sistema robótico completo tipo célula industrial autónoma",
-
       "phases": [
         {
-          "title": "Flujo de fábrica",
+          "title": "Simulación flujo fábrica",
           "tasks": [
-            "Entrada → clasificación → salida",
-            "Estados del sistema",
-            "Simulación"
+            "Flujo entrada → clasificación → salida",
+            "Máquina de estados"
           ]
         },
         {
-          "title": "Percepción",
+          "title": "Sistema completo",
           "tasks": [
-            "Detección objetos",
-            "Clasificación",
-            "Tracking"
-          ]
-        },
-        {
-          "title": "Decisión",
-          "tasks": [
-            "Motor reglas",
-            "Clasificación automática",
-            "Estados producción"
-          ]
-        },
-        {
-          "title": "Actuación",
-          "tasks": [
-            "Servos",
-            "Movimiento piezas",
-            "Sincronización"
-          ]
-        },
-        {
-          "title": "Integración completa",
-          "tasks": [
-            "Visión + decisión + actuadores",
-            "MQTT o ROS2",
-            "Sistema autónomo"
+            "Visión artificial",
+            "Sistema de decisión",
+            "Actuadores",
+            "Integración ROS2 + MQTT",
+            "Sistema autónomo completo"
           ]
         }
       ]
     }
-
   ]
 }

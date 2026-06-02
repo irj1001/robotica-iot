@@ -48,3 +48,50 @@
 1780217866: New client connected from 172.18.0.1:50298 as ESP32Client (p4, c1, k15).
 1780218064: mosquitto version 2.1.2 terminating
 1780218064: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1780308230: mosquitto version 2.1.2 starting
+1780308230: Config loaded from /mosquitto/config/mosquitto.conf.
+1780308230: Bridge support available.
+1780308230: Persistence support available.
+1780308230: TLS support available.
+1780308230: TLS-PSK support available.
+1780308230: Websockets support available.
+1780308230: Opening ipv4 listen socket on port 1883.
+1780308230: Opening ipv6 listen socket on port 1883.
+1780308230: mosquitto version 2.1.2 running
+1780308241: New connection from 172.18.0.1:42292 on port 1883.
+1780308241: New client connected from 172.18.0.1:42292 as auto-4673EEFC-E046-E61C-B7B0-84FE8F5606CB (p4, c1, k60).
+1780308337: New connection from 172.18.0.1:33726 on port 1883.
+1780308337: New client connected from 172.18.0.1:33726 as esp32-temp (p4, c1, k15).
+1780308403: Client esp32-temp [172.18.0.1:33726] disconnected: connection closed by client.
+1780308403: New connection from 172.18.0.1:42754 on port 1883.
+1780308403: New client connected from 172.18.0.1:42754 as esp32-temp (p4, c1, k15).
+1780308445: Client esp32-temp [172.18.0.1:42754] disconnected: exceeded timeout.
+1780308457: Client auto-4673EEFC-E046-E61C-B7B0-84FE8F5606CB [172.18.0.1:42292] disconnected: connection closed by client.
+1780308574: New connection from 172.18.0.1:42288 on port 1883.
+1780308574: New client connected from 172.18.0.1:42288 as esp32-temp (p4, c1, k15).
+1780308761: New connection from 172.18.0.1:37578 on port 1883.
+1780308761: New client connected from 172.18.0.1:37578 as auto-BE480D4A-CB0D-F37B-2FC8-929FA07C585F (p4, c1, k60).
+1780308823: Client auto-BE480D4A-CB0D-F37B-2FC8-929FA07C585F [172.18.0.1:37578] disconnected: connection closed by client.
+1780308850: New connection from 172.18.0.1:36488 on port 1883.
+1780308850: Client esp32-temp [172.18.0.1:42288] disconnected: session taken over.
+1780308850: New client connected from 172.18.0.1:36488 as esp32-temp (p4, c1, k15).
+1780308940: New connection from 172.18.0.1:45006 on port 1883.
+1780308940: New client connected from 172.18.0.1:45006 as auto-2088615E-8202-93DA-C4E9-AA7134D39BAA (p4, c1, k60).
+1780308946: Client auto-2088615E-8202-93DA-C4E9-AA7134D39BAA [172.18.0.1:45006] disconnected: connection closed by client.
+1780308973: New connection from 172.18.0.1:44328 on port 1883.
+1780308973: New client connected from 172.18.0.1:44328 as auto-ECA1A4B0-7F3E-6B9C-7D4B-851B41628638 (p4, c1, k60).
+1780308988: Client auto-ECA1A4B0-7F3E-6B9C-7D4B-851B41628638 [172.18.0.1:44328] disconnected: connection closed by client.
+1780309012: Client esp32-temp [172.18.0.1:36488] disconnected: exceeded timeout.
+1780309135: New connection from 172.18.0.1:36470 on port 1883.
+1780309135: New client connected from 172.18.0.1:36470 as auto-2AF06A81-F0AD-3069-BE28-E41D2C43FD3C (p4, c1, k60).
+1780309143: New connection from 172.18.0.1:48460 on port 1883.
+1780309143: New client connected from 172.18.0.1:48460 as esp32-temp (p4, c1, k15).
+1780309221: Client auto-2AF06A81-F0AD-3069-BE28-E41D2C43FD3C [172.18.0.1:36470] disconnected: connection closed by client.
+1780309357: Client esp32-temp [172.18.0.1:48460] disconnected: exceeded timeout.
+1780309437: New connection from 172.18.0.1:43386 on port 1883.
+1780309437: New client connected from 172.18.0.1:43386 as esp32-temp (p4, c1, k15).
+1780310030: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1780310576: Client esp32-temp [172.18.0.1:43386] disconnected: exceeded timeout.
+1780311831: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1780313128: mosquitto version 2.1.2 terminating
+1780313128: Saving in-memory database to /mosquitto/data//mosquitto.db.

@@ -4,6 +4,17 @@
   "history": [],
   "task_status": {
     "1_0": [
+      true,
+      true,
+      false
+    ],
+    "1_1": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "1_2": [
       false,
       false,
       false
